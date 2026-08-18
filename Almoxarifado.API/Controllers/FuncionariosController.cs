@@ -87,7 +87,7 @@ namespace Almoxarifado.API.Controllers
             funcionarioExistente.Nome = funcionario.Nome;
             funcionarioExistente.Email = funcionario.Email;
             funcionarioExistente.Cargo = funcionario.Cargo;
-            funcionarioExistente.Ativo = funcionario.Ativo;
+            funcionarioExistente.Ativo = funcionario.Ativo; 
 
             await _context.SaveChangesAsync();
 

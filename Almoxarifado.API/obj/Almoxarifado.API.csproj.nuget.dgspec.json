@@ -73,11 +73,15 @@
             },
             "Microsoft.OpenApi": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[2.7.5, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[10.2.3, )"
             }
           },
           "imports": [
