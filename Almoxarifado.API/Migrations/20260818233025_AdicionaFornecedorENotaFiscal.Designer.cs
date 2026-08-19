@@ -4,6 +4,7 @@ using Almoxarifado.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Almoxarifado.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260818233025_AdicionaFornecedorENotaFiscal")]
+    partial class AdicionaFornecedorENotaFiscal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,48 +24,6 @@ namespace Almoxarifado.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
-
-            modelBuilder.Entity("Almoxarifado.API.Models.Devolucao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CondicaoItem")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<DateTime>("DataDevolucao")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("FuncionarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Observacao")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)");
-
-                    b.Property<int>("QuantidadeDevolvida")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RequisicaoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuncionarioId");
-
-                    b.HasIndex("ItemId");
-
-                    b.HasIndex("RequisicaoId");
-
-                    b.ToTable("Devolucoes");
-                });
 
             modelBuilder.Entity("Almoxarifado.API.Models.EntradaNotaFiscal", b =>
                 {
@@ -271,93 +232,6 @@ namespace Almoxarifado.API.Migrations
                     b.ToTable("ItensEntradasNotasFiscais");
                 });
 
-            modelBuilder.Entity("Almoxarifado.API.Models.ItemRequisicao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ItemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuantidadeAtendida")
-                        .HasColumnType("int");
-
-                    b.Property<int>("QuantidadeSolicitada")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RequisicaoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ItemId");
-
-                    b.HasIndex("RequisicaoId");
-
-                    b.ToTable("ItensRequisicoes");
-                });
-
-            modelBuilder.Entity("Almoxarifado.API.Models.Requisicao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("DataAtendimento")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("DataSolicitacao")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("FuncionarioId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Observacao")
-                        .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuncionarioId");
-
-                    b.ToTable("Requisicoes");
-                });
-
-            modelBuilder.Entity("Almoxarifado.API.Models.Devolucao", b =>
-                {
-                    b.HasOne("Almoxarifado.API.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Almoxarifado.API.Models.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Almoxarifado.API.Models.Requisicao", "Requisicao")
-                        .WithMany()
-                        .HasForeignKey("RequisicaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Funcionario");
-
-                    b.Navigation("Item");
-
-                    b.Navigation("Requisicao");
-                });
-
             modelBuilder.Entity("Almoxarifado.API.Models.EntradaNotaFiscal", b =>
                 {
                     b.HasOne("Almoxarifado.API.Models.Fornecedor", "Fornecedor")
@@ -388,42 +262,7 @@ namespace Almoxarifado.API.Migrations
                     b.Navigation("Item");
                 });
 
-            modelBuilder.Entity("Almoxarifado.API.Models.ItemRequisicao", b =>
-                {
-                    b.HasOne("Almoxarifado.API.Models.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Almoxarifado.API.Models.Requisicao", "Requisicao")
-                        .WithMany("Itens")
-                        .HasForeignKey("RequisicaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Item");
-
-                    b.Navigation("Requisicao");
-                });
-
-            modelBuilder.Entity("Almoxarifado.API.Models.Requisicao", b =>
-                {
-                    b.HasOne("Almoxarifado.API.Models.Funcionario", "Funcionario")
-                        .WithMany()
-                        .HasForeignKey("FuncionarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Funcionario");
-                });
-
             modelBuilder.Entity("Almoxarifado.API.Models.EntradaNotaFiscal", b =>
-                {
-                    b.Navigation("Itens");
-                });
-
-            modelBuilder.Entity("Almoxarifado.API.Models.Requisicao", b =>
                 {
                     b.Navigation("Itens");
                 });

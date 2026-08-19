@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Almoxarifado.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20b1b567957c5f96869055e6c763bdc9bc91c31c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f8ebc4478fdf5dc544caab7544a27b556d80833")]
 [assembly: System.Reflection.AssemblyProductAttribute("Almoxarifado.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Almoxarifado.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

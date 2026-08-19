@@ -1,15 +1,15 @@
-# 📦 Almoxarifado API (.NET 9)
+# 📦 Almoxarifado API (.NET 10)
 
-API RESTful robusta desenvolvida em **C# / .NET 9** com **Entity Framework Core** e **MySQL (Pomelo)** para gerenciamento completo de controle de estoque, funcionários, fornecedores e entrada de materiais via Nota Fiscal.
+API RESTful robusta desenvolvida em **C# / .NET 10** com **Entity Framework Core** e **MySQL (Pomelo)** para gerenciamento completo de controle de estoque, funcionários, fornecedores, entrada de materiais via Nota Fiscal e auditoria de devoluções patrimoniais.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Linguagem / Framework:** C# | .NET 9.0
-- **Acesso a Dados:** Entity Framework Core 9.0 (ORM)
+- **Linguagem / Framework:** C# | .NET 10.0
+- **Acesso a Dados:** Entity Framework Core (ORM)
 - **Banco de Dados:** MySQL 8.0+ / MariaDB (Driver Pomelo)
-- **Documentação & Testes Interativos:** OpenAPI / Swagger UI (Swashbuckle)
+- **Documentação & Testes Interativos:** OpenAPI / Swagger UI
 - **Arquitetura:** MVC / Web API com Padrão REST
 
 ---
@@ -18,24 +18,30 @@ API RESTful robusta desenvolvida em **C# / .NET 9** com **Entity Framework Core*
 
 ### 👨‍💼 1. Gestão de Funcionários
 - Cadastro, atualização, listagem e inativação de colaboradores.
-- Controle por CPF único, cargo e departamento.
+- Controle por CPF único, cargo e e-mail corporativo.
 
 ### 📋 2. Controle de Estoque & Itens
-- Distinção entre produtos **Consumíveis** e **Patrimoniais/Retornáveis**.
-- Cálculo dinâmico de **Estoque Total** (`QuantidadeDisponivel` + `QuantidadeEmpenhada`).
-- Validação automática de código do item.
+- Distinção clara de regras de negócio para dois tipos de produtos:
+  - **Consumíveis (1):** Baixa definitiva do estoque no atendimento.
+  - **Retornáveis (2):** Transferência automática para o estoque empenhado durante o uso.
+- Cálculo automático de **Estoque Total** (`QuantidadeDisponivel` + `QuantidadeEmpenhada`).
+- Endpoint de ajuste e sincronização de saldos de estoque.
 
-### 🏭 3. Fornecedores e Notas Fiscais *(Em desenvolvimento)*
+### 🔄 3. Requisições e Devoluções (Auditável)
+- Ciclo de vida completo das requisições (*Pendente*, *Aprovada*, *Atendida*, *Recusada*, *Cancelada*).
+- **Módulo de Devoluções Formalizado:** Registro de devolução de itens retornáveis com vínculo de funcionário, data/hora exata, observações e condição do equipamento (*ex: "Em perfeito estado"*).
+
+### 🏭 4. Fornecedores e Entrada de Notas Fiscais
 - Cadastro completo de fornecedores por CNPJ.
-- Entrada de mercadorias vinculadas a Nota Fiscal (NF-e).
-- Atualização automática de saldo de estoque no recebimento.
+- Entrada de mercadorias vinculadas à Nota Fiscal (NF-e).
+- Incremento automático e seguro do saldo de estoque no recebimento das notas.
 
 ---
 
 ## 🚀 Como Executar o Projeto Localmente
 
 ### Pré-requisitos
-- [.NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [.NET 10.0 SDK](https://dotnet.microsoft.com/download)
 - [MySQL Server 8.0+](https://dev.mysql.com/downloads/installer/)
 
 ### 1. Clonar o repositório

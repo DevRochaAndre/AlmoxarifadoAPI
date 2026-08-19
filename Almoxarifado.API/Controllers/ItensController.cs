@@ -83,4 +83,27 @@ public class ItensController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpPut("{id}/ajustar-saldos")]
+    public async Task<IActionResult> AjustarSaldosItem(int id, [FromQuery] int quantidadeDisponivel, [FromQuery] int quantidadeEmpenhada)
+    {
+        var item = await _context.Itens.FindAsync(id);
+        if (item == null)
+            return NotFound(new { mensagem = "Item não encontrado." });
+
+        if (quantidadeDisponivel < 0 || quantidadeEmpenhada < 0)
+            return BadRequest(new { mensagem = "As quantidades não podem ser negativas." });
+
+        // Atualiza apenas as propriedades com setter
+        item.QuantidadeDisponivel = quantidadeDisponivel;
+        item.QuantidadeEmpenhada = quantidadeEmpenhada;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(new
+        {
+            mensagem = $"Saldos do item '{item.Nome}' ajustados com sucesso!",
+            item
+        });
+    }
 }

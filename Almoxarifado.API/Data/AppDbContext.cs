@@ -10,6 +10,17 @@ namespace Almoxarifado.API.Data
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Item> Itens { get; set; }
 
+        // Novas tabelas da FASE 4:
+        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<EntradaNotaFiscal> EntradasNotasFiscais { get; set; }
+        public DbSet<ItemEntradaNotaFiscal> ItensEntradasNotasFiscais { get; set; }
+
+        // Novas tabelas da FASE 5:
+        public DbSet<Requisicao> Requisicoes { get; set; }
+        public DbSet<ItemRequisicao> ItensRequisicoes { get; set; }
+
+        public DbSet<Devolucao> Devolucoes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -28,6 +39,19 @@ namespace Almoxarifado.API.Data
             modelBuilder.Entity<Item>()
                 .HasIndex(i => i.Codigo)
                 .IsUnique();
+
+            // Mapeamento do Preço Unitário no ItemEntradaNotaFiscal
+            modelBuilder.Entity<ItemEntradaNotaFiscal>()
+                .Property(p => p.PrecoUnitario)
+                .HasPrecision(18, 2);
+
+            // Mapeamento do Valor Total no EntradaNotaFiscal
+            modelBuilder.Entity<EntradaNotaFiscal>()
+                .Property(p => p.ValorTotalNota)
+                .HasPrecision(18, 2);
+
+
+
         }
     }
 }
