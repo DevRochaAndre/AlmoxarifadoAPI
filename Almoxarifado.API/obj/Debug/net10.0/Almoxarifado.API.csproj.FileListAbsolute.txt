@@ -123,3 +123,13 @@ D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\obj\Debug\net10.0\Almoxarifado.API.
 D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\BCrypt-Net-Next.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projetos\AlmoxarifadoAPI\Almoxarifado.API\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll

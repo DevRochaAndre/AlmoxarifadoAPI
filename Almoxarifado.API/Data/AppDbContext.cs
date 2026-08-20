@@ -21,6 +21,8 @@ namespace Almoxarifado.API.Data
 
         public DbSet<Devolucao> Devolucoes { get; set; }
 
+        public DbSet<Usuario> Usuarios { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
